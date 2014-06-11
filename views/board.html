@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+</head>
+<body id="boardAppView">
+<div class="container" id ="board-list">
+    <h3>게시판<p class="pull-right"><button type="button" class="btn btn-primary text-center" id="create">등록</button></p></h3>
+</div>
+<div class="modal fade" id="createBoardView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">글 등록</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="boardInsertForm">
+                    <div class="form-group">
+                        <label for="inputWriter" class="col-sm-2 control-label">작성자</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="writer">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTitle" class="col-sm-2 control-label">제목</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="title">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputContents" class="col-sm-2 control-label">내용</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" name="contents"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" name="close">닫기</button>
+                <button type="button" class="btn btn-primary" name="save">저장</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/template" id='updateBoardViewTemplate'>
+    <div class="modal fade" id="updateBoardView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">글 수정</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" id="boardUpdateForm">
+                        <input type="hidden" name="id" value="<%=id%>"/>
+                        <div class="form-group">
+                            <label for="inputWriter" class="col-sm-2 control-label">작성자</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="writer"  value="<%=writer%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTitle" class="col-sm-2 control-label">제목</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="title"  value="<%=title%>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputContents" class="col-sm-2 control-label">내용</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="3" name="contents"><%=contents%></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" name="close">닫기</button>
+                    <button type="button" class="btn btn-primary" name="update">저장</button>
+                    <button type="button" class="btn btn-danger" name="delete">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//rawgithub.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="./common.js"></script>
+<script src="./board.js"></script>
+</body>
+</html>

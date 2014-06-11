@@ -4,7 +4,7 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
+//var routes = require('./routes');
 var board = require('./routes/board');
 var http = require('http');
 var path = require('path');
@@ -28,7 +28,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/', function(req, res) {
+    res.sendfile(__dirname + '/views/board.html');
+});
 app.get('/board', board.list);
 app.get('/board/:id', board.one);
 app.post('/board', board.insert);

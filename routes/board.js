@@ -1,22 +1,22 @@
 var boardList = [
-    { id : 1, name : 'anne', title: 'I am anne of green gables', contents : 'I have a red hair', insertDateTime : new Date(2014,05,25,14,18), updateDateTime : new Date(2014,05,25,14,18)},
-    { id : 2, name : 'gilbert', title: 'I am gilbert', contents : 'I love anne', insertDateTime : new Date(2014,04,05,14,18), updateDateTime : new Date(2014,04,05,14,18)},
-    { id : 3, name : 'diana', title: 'I ame diana', contents : 'I am best friend with anne', insertDateTime : new Date(2014,03,15,14,18), updateDateTime : new Date(2014,03,15,14,18)}
+    { id : 1, writer : 'anne', title: 'I am anne of green gables', contents : 'I have a red hair', insertDateTime : new Date(2014,04,25,14,18), updateDateTime : new Date(2014,05,25,14,18)},
+    { id : 2, writer : 'gilbert', title: 'I am gilbert', contents : 'I love anne', insertDateTime : new Date(2014,03,05,14,18), updateDateTime : new Date(2014,04,05,14,18)},
+    { id : 3, writer : 'diana', title: 'I ame diana', contents : 'I am best friend with anne', insertDateTime : new Date(2014,02,15,14,18), updateDateTime : new Date(2014,03,15,14,18)}
 ];
-
-function getStartPageNo(currentPageNo, pageSize) {
-    return ((parseInt(currentPageNo, 10)) - 1) * parseInt(pageSize, 10) + 1;
-}
-
-function getEndPageNo(startPageNo, pageSize, totalCount) {
-    var endPageNo = parseInt(startPageNo) + parseInt(pageSize);
-
-    if (endPageNo > totalCount) {
-        return totalCount + 1;
-    } else {
-        return endPageNo;
-    }
-}
+//
+//function getStartPageNo(currentPageNo, pageSize) {
+//    return ((parseInt(currentPageNo, 10)) - 1) * parseInt(pageSize, 10) + 1;
+//}
+//
+//function getEndPageNo(startPageNo, pageSize, totalCount) {
+//    var endPageNo = parseInt(startPageNo) + parseInt(pageSize);
+//
+//    if (endPageNo > totalCount) {
+//        return totalCount + 1;
+//    } else {
+//        return endPageNo;
+//    }
+//}
 
 function getOne(id) {
     var boardLength = boardList.length;
@@ -40,14 +40,16 @@ function getMaxId() {
     return maxId;
 }
 exports.list = function(req, res){
-    var currentPageNo = req.param("currentPageNo");
-    var pageSize = req.param("pageSize");
-    var totalCount = boardList.length;
-    var startPageNo = getStartPageNo(currentPageNo, pageSize);
-    var endPageNo = getEndPageNo(startPageNo, pageSize, totalCount);
-
-    var result = {list : boardList.slice(startPageNo - 1, endPageNo - 1), totalCount : totalCount};
-    res.send(result);
+//    var currentPageNo = req.param("currentPageNo");
+//    var pageSize = req.param("pageSize");
+//    var totalCount = boardList.length;
+//    var startPageNo = getStartPageNo(currentPageNo, pageSize);
+//    var endPageNo = getEndPageNo(startPageNo, pageSize, totalCount);
+//
+//    var totalPageCount = Math.ceil(totalCount / 10);
+//    var result = {list : boardList.slice(startPageNo - 1, endPageNo - 1), totalCount : totalCount, totalPageCount : totalPageCount};
+//    res.send(result);
+    res.send(boardList);
 };
 
 exports.one = function(req, res){
