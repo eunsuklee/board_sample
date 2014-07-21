@@ -74,7 +74,7 @@ $(function(){
         addAll: function() {
             this.collection.forEach(this.addOne, this);
             $('#board-list tbody').remove();
-            $('#board-list').append(this.el);
+            $('#board-list').append(boardListView.el);
         },
         renderModifiyView: function(e){
            var id = $(e.target).parent().parent().data('id');
@@ -169,22 +169,8 @@ $(function(){
         }
     });
 
-    var BoardRouter = new (Backbone.Router.extend({
-        routes: {
-            "": "index"
-        },
-        initialize: function(){
-            this.boardList = new BoardList();
-            this.boardAppView = new BoardAppView ({el : $("#boardAppView"), collection: this.boardList});
-            this.boardListView = new BoardListView({ collection: this.boardList });
-        },
-        index: function(){
-            this.boardList.fetch({reset: true});
-        },
-        start: function(){
-            Backbone.history.start();
-        }
-    }));
-    BoardRouter.start();
-
+    var boardList = new BoardList();
+    var boardAppView = new BoardAppView ({el : $("#boardAppView"), collection: boardList});
+    var boardListView = new BoardListView({ collection: boardList });
+    boardList.fetch({reset: true});
 });
