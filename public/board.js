@@ -173,4 +173,5 @@ $(function(){
     var boardAppView = new BoardAppView ({el : $("#boardAppView"), collection: boardList});
     var boardListView = new BoardListView({ collection: boardList });
     boardList.fetch({reset: true});
+
 });
