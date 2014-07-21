@@ -54,8 +54,8 @@ $(function(){
 
      var BoardListView = Backbone.View.extend({
         initialize: function(){
-            this.collection.on('add', this.addOne, this);
-            this.collection.on('reset', this.addAll, this);
+           this.collection.on('add', this.addOne, this);
+           this.collection.on('reset', this.addAll, this);
         },
          events: {
              'click .list-group-item p strong' : 'renderModifiyView'
@@ -73,6 +73,8 @@ $(function(){
         },
         addAll: function() {
             this.collection.forEach(this.addOne, this);
+            $('#board-list tbody').remove();
+            $('#board-list').append(boardListView.el);
         },
         renderModifiyView: function(e){
            var id = $(e.target).parent().parent().data('id');
@@ -170,8 +172,5 @@ $(function(){
     var boardList = new BoardList();
     var boardAppView = new BoardAppView ({el : $("#boardAppView"), collection: boardList});
     var boardListView = new BoardListView({ collection: boardList });
-    boardList.fetch();
-    boardListView.render();
-    $('#board-list tbody').remove();
-    $('#board-list').append(boardListView.el);
+    boardList.fetch({reset: true});
 });
